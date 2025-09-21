@@ -43,75 +43,37 @@ void Obstacle()
   if( distance <= 30)
   {
     Serial.println(distance);
-    delay(2000);
     Stop();
-    delay(100);
-    Serial.println("Moving backward");
-    delay(100);
-    backward();
-    Serial.println("Moved backward");
-    delay(100);
-    Stop();
-    Serial.println("Moving LeftSide");
     delay(100);
     L = leftsee();
-    delay(500);
-    Serial.println("Moved to left side");
-    delay(2500);
-    Serial.println("Object distance on left side is");
-    Serial.println(L);
-    delay(2500);
-    Serial.println("Moving to  servo position");
-    delay(2500);
     servo.write(spoint);
-    delay(500);
-    Serial.println("Moving Right Side");
-    delay(2500);
     R = rightsee();
-    delay(500);
-    Serial.println("Moved to right side");
-    delay(2500);
-    Serial.println("Object distance on right side is:");
-    Serial.print(R);
-    delay(2500);
-    Serial.println("Moving to  servo position");
-    delay(2500);
     servo.write(spoint);
     delay(500);
     if (L < R)
     {
-      Serial.println("Right side object distance is more so moving to right side");
-      delay(500);
       right();
-      delay(1500);// 700 delay is the exactly 90 degree turn
+      delay(500);// 700 delay is the exactly 90 degree turn
       Stop();
-      Serial.println("Moved to right side");
-      delay(1000);
+      delay(100);
     }
     else if (L > R)
     {
-      Serial.println("Left side object distance is more so moving to left side");
-      delay(500);
       left();
-      delay(1500);
+      delay(500);
       Stop();
-      Serial.println("Moved to left side");
-      delay(1000);
+      delay(100);
     }
     else
     {
-      Serial.println("Both on left side and right side object distance is same so moving to left side");
-      delay(500);
       left();
-      delay(1000);
+      delay(100);
       Stop();
-      Serial.println("Moved to left side");
-      delay(1000);
+      delay(100);
     }
   }
   else
   {
-    Serial.println("No object is found moving forward");
     forward();
   }
 
